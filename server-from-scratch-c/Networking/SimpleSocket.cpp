@@ -6,9 +6,6 @@ SimpleSocket::SimpleSocket(int domain,int service,int protocol,int port, u_long 
     address.sin_addr.s_addr = htonl(interfacee);
     sock = socket(domain,service,protocol);
     test_connection(sock);
-    connection = connect_to_network(sock,address);
-    test_connection(connection);
-
 }
 
 void SimpleSocket::test_connection(int item_to_test){
@@ -28,4 +25,8 @@ int SimpleSocket::get_socket(){
 
 int SimpleSocket::get_connection(){
     return connection;
+}
+
+void SimpleSocket::set_connection(int con){
+    connection = con;
 }

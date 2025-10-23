@@ -1,0 +1,10 @@
+#include "BindingSocket.hpp"
+
+BindingSocket::BindingSocket(int domain, int service, int protocol, int port, u_long interfacee):SimpleSocket(domain, service, protocol, port, interfacee){
+    set_connection(connect_to_network(get_socket(),get_socket_address()));
+    test_connection(get_connection());
+}
+
+int BindingSocket::connect_to_network(SOCKET sock, struct sockaddr_in address){
+    return bind(sock, (struct sockaddr *)&address,sizeof(address)); 
+}
